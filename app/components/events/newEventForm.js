@@ -38,8 +38,8 @@ export default class newContributionForm extends React.Component {
                 >
                 </MaterialIcons>
             </View>
-            <View style={styles.iconContainer}>
-                <Text style={styles.headerText}>New Event!</Text> 
+            <View style={styles.textContainer}>
+                <Text style={styles.headerText}>New Event</Text> 
             </View>
             <View style={styles.iconContainer}>
             </View>
@@ -90,6 +90,12 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'flex-end',
+  },
+  textContainer: {
+    flex: 6,
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    justifyContent: 'center'
   },
   icon: {
     marginLeft: 5,
