@@ -1,9 +1,10 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import { TabNavigator, DrawerNavigator } from 'react-navigation';
+import { DrawerNavigator } from 'react-navigation';
 
 import newContributionForm from '../contributions/newContributionForm';
 import newEventForm from '../events/newEventForm';
+import LoginForm from '../login/LoginForm';
 
 const mainDrawer = DrawerNavigator(
     {
@@ -14,10 +15,14 @@ const mainDrawer = DrawerNavigator(
         "Add New Contribution": {
             path: '/',
             screen: newContributionForm
+        },
+        "Login": {
+            path: "/",
+            screen: LoginForm
         }
     },
     {
-        initialRouteName: 'Add New Event',
+        initialRouteName: 'Login',
         drawerPosition: 'left'
     }
 );
