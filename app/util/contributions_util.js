@@ -1,21 +1,21 @@
 import axios from 'axios';
 
 export const fetchContributions = () => (
-    axios.get('api/contributions', {})
+    axios.get('https://e-contribution-card.herokuapp.com/api/contributions', {})
 );
 
 export const fetchContribution = (contributionId) => (
-    axios.get(`api/contributions/${contributionId}`, {})
+    axios.get(`https://e-contribution-card.herokuapp.com/api/contributions/${contributionId}`, {})
 );
 
 export const createContribution = (contribution) => (
-    axios.post('api/contributions', { contribution })
+    axios.post('https://e-contribution-card.herokuapp.com/api/contributions', { contribution })
 );
 
 export const updateContribution = (contribution) => (
-    axios.patch(`api/contributions/${contribution.id}`, { contribution })
+    axios.patch(`https://e-contribution-card.herokuapp.com/api/contributions/${contribution.id}`, { contribution })
 );
 
 export const deleteContribution = (contributionId) => (
-    axios.delete(`api/contributions/${contributionId}`, {})
+    axios.delete(`https://e-contribution-card.herokuapp.com/api/contributions/${contributionId}`, {})
 );
