@@ -5,16 +5,6 @@ import { TabNavigator, DrawerNavigator } from 'react-navigation';
 import newContributionForm from '../contributions/newContributionForm';
 import newEventForm from '../events/newEventForm';
 
-let MainScreenNavgiator = TabNavigator({
-    "New Contribution": { screen: newContributionForm },
-    "New Event": { screen: newEventForm }
-});
-
-MainScreenNavgiator.navigationOptions = {
-    title: "Tab Example"
-};
-
-
 const mainDrawer = DrawerNavigator(
     {
         "Add New Event": {
