@@ -69,11 +69,19 @@ class LoginForm extends React.Component {
             <TouchableOpacity 
                 style={styles.fbButton}
                 onPress={this.logInFB}>
-                <Text>Connect with Facebook</Text>
+                <Image
+                    style={{ width: 29, height: 29 }}
+                    source={require('../../../media/FB-f-Logo__white_29.png')}
+                ></Image>
+                <Text style={styles.btnText}>Connect with Facebook</Text>
             </TouchableOpacity>
             <TouchableOpacity 
                 style={styles.gButton}>
-                <Text>Sign in with Google</Text>
+                <Image
+                    style={{ width: 52, height: 52, padding: 0, margin: 0 }}
+                    source={require('../../../media/btn_google_light_focus_ios.png')}
+                ></Image>
+                <Text style={styles.btnTextG}>Sign in with Google</Text>
             </TouchableOpacity>
         </View>
         );
@@ -123,9 +131,10 @@ const styles = StyleSheet.create({
         marginTop: 20
     },
     fbButton: {
+        flexDirection: "row",
         elevation: 4,
         height: 50,
-        width: 300,
+        width: 260,
         backgroundColor:'#3C5894',
         paddingLeft: 10,
         paddingRight: 10,
@@ -137,16 +146,16 @@ const styles = StyleSheet.create({
             height: 3
         },
         shadowRadius: 3,
-        shadowOpacity: 1.0
+        shadowOpacity: 1.0,
     },
     gButton: {
         elevation: 4,
+        flexDirection: "row",
         height: 50,
-        width: 300,
-        backgroundColor:'#c04d3b',
-        paddingLeft: 10,
-        paddingRight: 10,
-        justifyContent: "center",
+        width: 260,
+        backgroundColor:'#5086EC',
+        paddingRight: 0,
+        justifyContent: "flex-start",
         alignItems: "center",
         shadowColor: '#6b0037',
         shadowOffset: {
@@ -156,6 +165,18 @@ const styles = StyleSheet.create({
         shadowRadius: 3,
         shadowOpacity: 1.0,
         marginTop: 15
+    },
+    btnText: {
+        color: "#fff",
+        fontSize: 18,
+        fontWeight: "bold",
+        marginLeft: 10
+    },
+    btnTextG: {
+        color: "#fff",
+        fontSize: 20,
+        fontWeight: "bold",
+        marginLeft: 15
     }
 });
 
