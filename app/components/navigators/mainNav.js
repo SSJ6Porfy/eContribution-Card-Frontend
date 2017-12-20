@@ -4,7 +4,8 @@ import { DrawerNavigator } from 'react-navigation';
 
 import newContributionForm from '../contributions/newContributionForm';
 import newEventForm from '../events/newEventForm';
-import LoginForm from '../login/LoginForm';
+import LoginForm from '../login/loginForm';
+import SignupForm from "../login/signupForm";
 
 const mainDrawer = DrawerNavigator(
     {
@@ -19,6 +20,10 @@ const mainDrawer = DrawerNavigator(
         "Login": {
             path: "/",
             screen: LoginForm
+        },
+        "Signup": {
+            path: "/",
+            screen: SignupForm
         }
     },
     {
