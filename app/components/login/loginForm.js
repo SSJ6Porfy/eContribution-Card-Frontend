@@ -17,17 +17,17 @@ class LoginForm extends React.Component {
         this.logInFB = this.logInFB.bind(this);
     }
 
-    logInFB() {
-        const { type, token } = Expo.Facebook.logInWithReadPermissionsAsync('311969105966201', {
+    async logInFB() {
+        const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync('311969105966201', {
             permissions: ['public_profile'],
           });
         if (type === 'success') {
           // Get the user's name using Facebook's Graph API
-          const response = fetch(
+          const response = await fetch(
             `https://graph.facebook.com/me?access_token=${token}`);
-          Alert.alert(
+          console.log(
             'Logged in!',
-            `Hi ${(response.json()).name}!`,
+            `Hi ${(await response.json()).name}!`,
           );
         }
       }
@@ -73,7 +73,7 @@ class LoginForm extends React.Component {
                     style={{ width: 29, height: 29 }}
                     source={require('../../../media/FB-f-Logo__white_29.png')}
                 ></Image>
-                <Text style={styles.btnText}>Connect with Facebook</Text>
+                <Text style={styles.btnText}>Login with Facebook</Text>
             </TouchableOpacity>
             <TouchableOpacity 
                 style={styles.gButton}>
@@ -82,6 +82,9 @@ class LoginForm extends React.Component {
                     source={require('../../../media/btn_google_light_focus_ios.png')}
                 ></Image>
                 <Text style={styles.btnTextG}>Sign in with Google</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.signButton}>
+                <Text style={styles.signUp}>Don't have an Account yet? Sign Up</Text>
             </TouchableOpacity>
         </View>
         );
@@ -140,7 +143,7 @@ const styles = StyleSheet.create({
         paddingRight: 10,
         justifyContent: "center",
         alignItems: "center",
-        shadowColor: '#6b0037',
+        shadowColor: '#000000',
         shadowOffset: {
             width: 0,
             height: 3
@@ -154,10 +157,9 @@ const styles = StyleSheet.create({
         height: 50,
         width: 260,
         backgroundColor:'#5086EC',
-        paddingRight: 0,
         justifyContent: "flex-start",
         alignItems: "center",
-        shadowColor: '#6b0037',
+        shadowColor: '#000000',
         shadowOffset: {
             width: 0,
             height: 3
@@ -165,6 +167,25 @@ const styles = StyleSheet.create({
         shadowRadius: 3,
         shadowOpacity: 1.0,
         marginTop: 15
+    },
+    signButton: {
+        elevation: 4,
+        flexDirection: "row",
+        height: 50,
+        width: 260,
+        backgroundColor:'#fff',
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 15,
+        borderWidth: 2,
+        borderColor: 'blue',
+        shadowColor: '#000000',
+        shadowOffset: {
+            width: 0,
+            height: 3
+        },
+        shadowRadius: 3,
+        shadowOpacity: 1.0
     },
     btnText: {
         color: "#fff",
@@ -177,6 +198,9 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: "bold",
         marginLeft: 15
+    },
+    signUp: {
+        color: 'blue',
     }
 });
 
