@@ -14,21 +14,36 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 class LoginForm extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            userInfo: null
+        }
         this.logInFB = this.logInFB.bind(this);
+    }
+
+    componentDidUpdate() {
+        console.log(this.state.userInfo);
+        if (this.state.userInfo) {
+            this.props.navigation.navigate("Add New Contribution");    
+        }
+    }
+
+    componentDidMount() {
+        console.log(this.state.userInfo);
+        if (this.state.userInfo) {
+            this.props.navigation.navigate("Add New Contribution");    
+        }
     }
 
     async logInFB() {
         const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync('311969105966201', {
-            permissions: ['public_profile'],
+            permissions: ['public_profile', 'email'],
           });
         if (type === 'success') {
           // Get the user's name using Facebook's Graph API
-          const response = await fetch(
-            `https://graph.facebook.com/me?access_token=${token}`);
-          console.log(
-            'Logged in!',
-            `Hi ${(await response.json()).name}!`,
-          );
+          const response = await fetch(`https://graph.facebook.com/me?access_token=${token}?fields=id,name,email`)
+                                 .then(res => res.json())
+                                 .then(user => this.setState({ userInfo: user }))
+                                 .catch((e) => console.log(e));      
         }
       }
 
